@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal Wisata dan Kuliner</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .scroll-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        /* Custom scrollbar styling */
+        scrollbar-width: thin;
+        scrollbar-color: #091e5d #f1f1f1;
+      }
+
+      .scroll-container::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .scroll-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+
+      .scroll-container::-webkit-scrollbar-thumb {
+        background: #091e5d;
+        border-radius: 4px;
+      }
+
+      .scroll-container::-webkit-scrollbar-thumb:hover {
+        background: #0a2a7a;
+      }
+
+      .items-wrapper {
+        display: flex;
+        gap: 20px;
+        width: fit-content;
+      }
+
+      .boxkuliner {
+        flex-shrink: 0; /* Prevent items from shrinking */
+        width: 290px;
+        height: 241px;
+        background-color: #bbd6eb;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .boxkuliner:hover {
+        transform: translateY(-5px);
+      }
+
+      .boxin {
+        width: 95%;
+        height: 70%;
+      }
+
+      .arrow {
+        width: 110px;
+        height: 36px;
+        background-color: #091e5d;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .arrow::after {
+        content: "→";
+        color: white;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .arrow:hover {
+        background-color: #0a2a7a;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .boxkuliner {
+          width: 250px;
+          height: 200px;
+        }
+
+        .items-wrapper {
+          gap: 15px;
+        }
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background-color: #6c757d !important;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        color: #007bff !important;
+      }
+
+      .navbar-brand span {
+        color: #000 !important;
+      }
+
+      /* Section titles */
+      .section-title {
+        font-weight: 600;
+        margin: 30px 0 15px 0;
+        color: #333;
+      }
+
+      /* Budaya & Sejarah section styles */
+      .section-budaya {
+        max-height: calc(
+          100vh - 56px
+        ); /* Mengatur tinggi maksimum agar tidak melebihi navbar */
+        overflow-y: auto; /* Menambahkan scroll jika konten melebihi tinggi */
+        padding: 20px; /* Menambahkan padding untuk estetika */
+        background-color: #eef1f6;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      /* Container Budaya */
+      .containerBudaya {
+        width: 100%;
+        min-height: 320px; /* Mengatur tinggi minimum untuk setiap container */
+        margin-bottom: 30px;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .containerBudaya:first-of-type {
+        justify-content: flex-start;
+      }
+
+      .containerBudaya:last-of-type {
+        justify-content: flex-end;
+        margin-bottom: 0;
+      }
+
+      .containerBudaya .imej {
+        flex: 0 0 300px;
+        height: 290px;
+      }
+
+      .containerBudaya .imej img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .containerBudaya .text {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .containerBudaya .text h2 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .containerBudaya .text p {
+        color: #000000;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      /* Forum Wisata section */
+      .forum-banner {
+        background-color: #7097d2;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        margin: 30px 0;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      /* Event & Workshop */
+      .event-card {
+        height: 120px;
+        background-color: #e9ecef;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .event-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Mitra Bisnis */
+      .partner-card {
+        height: 320px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .partner-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer */
+      footer {
+        padding: 30px 0;
+        margin-top: 40px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .containerBudaya {
+          flex-direction: column !important;
+          text-align: center;
+        }
+
+        .containerBudaya .imej {
+          flex: 0 0 250px;
+          height: 250px;
+          margin-bottom: 15px;
+        }
+
+        .containerBudaya .text {
+          padding: 15px 0;
+        }
+      }
+
+      /* Container spacing */
+      .container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Punya Ari Start -->
+    <body>
+      <nav class="custom-navbar">
+        <a class="brand-link" href="#">
+          <img
+            src="assets/images/Logo MalangYuk.png"
+            alt="Logo MalangYuk"
+            class="logo-img"
+          />
+          <div class="merk">
+            <div class="malang">Malang</div>
+            <div class="yuk">yuk!</div>
+          </div>
+        </a>
+
+        <div class="search-container">
+          <form action="/search" method="get" class="search-form">
+            <img
+              src="assets/images/Search icon.png"
+              alt="Search"
+              class="search-icon"
+            />
+            <input
+              type="search"
+              id="search-input"
+              name="q"
+              placeholder="Cari"
+            />
+          </form>
+        </div>
+      </nav>
+
+      <main class="content-area">
+        <section class="hero-section">
+          <img
+            src="assets/images/Background-malang.png"
+            alt="Pemandangan Kota Malang"
+            class="hero-image"
+          />
+        </section>
+
+        <section class="categories-section">
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Wisata.png"
+                alt="Wisata"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Wisata</div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Kuliner.png"
+                alt="Kuliner"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Kuliner</div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Budaya.png"
+                alt="Budaya & Sejarah"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Budaya & Sejarah</div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Komunitas.png"
+                alt="Komunitas"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Komunitas</div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Oleh.png"
+                alt="Oleh-oleh"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Oleh-oleh</div>
+          </div>
+          <div class="category-item">
+            <div class="category-icon-container">
+              <img
+                src="assets/images/Ibadah.png"
+                alt="Tempat Ibadah"
+                class="category-icon"
+              />
+            </div>
+            <div class="category-label">Tempat Ibadah</div>
+          </div>
+        </section>
+
+        <h4 class="wisata-section-title">Wisata</h4>
+        <div class="wisata-grid">
+          <div class="wisata-card">
+            <img
+              src="assets/images/JTP1.png"
+              alt="Jatim Park 1"
+              class="wisata-card-image"
+            />
+            <div class="wisata-card-content-top">
+              <h3 class="wisata-card-title">Jawa Timur Park 1</h3>
+              <h6 class="jam-operasional">08:30 - 16:30</h6>
+            </div>
+            <div class="wisata-card-content-bot">
+              <h6 class="wisata-card-description">
+                Jl. Kartika No. 2, Sisir, Batu
+              </h6>
+              <h6 class="harga-tiket">>Rp113.850</h6>
+            </div>
+          </div>
+
+          <div class="wisata-card">
+            <img
+              src="assets/images/JTP2.png"
+              alt="Jatim Park 2"
+              class="wisata-card-image"
+            />
+            <div class="wisata-card-content-top">
+              <h3 class="wisata-card-title">Jawa Timur Park 2</h3>
+              <h6 class="jam-operasional">08:30 - 16:30</h6>
+            </div>
+            <div class="wisata-card-content-bot">
+              <h6 class="wisata-card-description">
+                Jl. Raya Oro-Oro Ombo No.9 Batu
+              </h6>
+              <h6 class="harga-tiket">>Rp120.000</h6>
+            </div>
+          </div>
+
+          <div class="wisata-card">
+            <img
+              src="assets/images/JTP3.png"
+              alt="Museum Angkut"
+              class="wisata-card-image"
+            />
+            <div class="wisata-card-content-top">
+              <h3 class="wisata-card-title">Museum Angkut</h3>
+              <h6 class="jam-operasional">12:00 - 20:00</h6>
+            </div>
+            <div class="wisata-card-content-bot">
+              <h6 class="wisata-card-description">
+                Jl. Terusan Sultan Agung No.2, Batu
+              </h6>
+              <h6 class="harga-tiket">>Rp110.000</h6>
+            </div>
+          </div>
+
+          <div class="wisata-card">
+            <img
+              src="assets/images/BNS.png"
+              alt="Batu Night Spectacular"
+              class="wisata-card-image"
+            />
+            <div class="wisata-card-content-top">
+              <h3 class="wisata-card-title">Batu Night Spectacular</h3>
+              <h6 class="jam-operasional">15:00 - 23:00</h6>
+            </div>
+            <div class="wisata-card-content-bot">
+              <h6 class="wisata-card-description">
+                Jl. Hayam Wuruk No. 1, Batu
+              </h6>
+              <h6 class="harga-tiket">>Rp44.540</h6>
+            </div>
+          </div>
+        </div>
+
+        <section class="kuliner-section">
+          <h2 class="kuliner-section-title">Kuliner</h2>
+          <div class="kuliner-grid">
+            <div class="kuliner-card">
+              <img
+                src="assets/images/kuliner1.png"
+                alt="Sego Sambel"
+                class="kuliner-card-image"
+              />
+              <div class="kuliner-card-content-top">
+                <h3 class="kuliner-card-title">Sego Sambel Cak UUT</h3>
+                <h6 class="kuliner-jam-operasional">09:00 - 21:00</h6>
+              </div>
+              <div class="kuliner-card-content-bot">
+                <h6 class="kuliner-card-description">
+                  Kec Sukun & Kec Lowokwaru
+                </h6>
+                <h6 class="kuliner-harga">>Rp25.000</h6>
+              </div>
+            </div>
+
+            <div class="kuliner-card">
+              <img
+                src="assets/images/kuliner2.png"
+                alt="TimTong"
+                class="kuliner-card-image"
+              />
+              <div class="kuliner-card-content-top">
+                <h3 class="kuliner-card-title">TimTong</h3>
+                <h6 class="kuliner-jam-operasional">10:00 - 21:00</h6>
+              </div>
+              <div class="kuliner-card-content-bot">
+                <h6 class="kuliner-card-description">
+                  Jl. Kawi No.22A, Klojen
+                </h6>
+                <h6 class="kuliner-harga">>Rp25.000</h6>
+              </div>
+            </div>
+
+            <div class="kuliner-card">
+              <img
+                src="assets/images/kuliner3.png"
+                alt="Depot Tanjung Api"
+                class="kuliner-card-image"
+              />
+              <div class="kuliner-card-content-top">
+                <h3 class="kuliner-card-title">Depot Tanjung Api</h3>
+                <h6 class="kuliner-jam-operasional">10:00 - 00:00</h6>
+              </div>
+              <div class="kuliner-card-content-bot">
+                <h6 class="kuliner-card-description">
+                  Jl. Panggung No.5 Klojen
+                </h6>
+                <h6 class="kuliner-harga">>Rp30.000</h6>
+              </div>
+            </div>
+
+            <div class="kuliner-card">
+              <img
+                src="assets/images/kuliner4.png"
+                alt="Bakso"
+                class="kuliner-card-image"
+              />
+              <div class="kuliner-card-content-top">
+                <h3 class="kuliner-card-title">Bakso President</h3>
+                <h6 class="kuliner-jam-operasional">08:00 - 21:30</h6>
+              </div>
+              <div class="kuliner-card-content-bot">
+                <h6 class="kuliner-card-description">
+                  Kec Sukun & Kec Lowokwaru
+                </h6>
+                <h6 class="kuliner-harga">>Rp25.000</h6>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+    <!-- Punya Ari -->
+
+    <!-- SECTION BUDAYA & SEJARAH -->
+    <div class="container mt-4">
+      <div
+        class="titlecontainer d-flex"
+        style="
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        "
+      >
+        <h2 style="margin: 0; color: #091e5d">Budaya & Sejarah</h2>
+        <div class="arrow"></div>
+      </div>
+      <div
+        class="containerBudaya d-flex"
+        style="margin-top: 50px; background-color: #eef1f6"
+      >
+        <div class="imej">
+          <img src="assets/images/assets1.png" alt="Festival Malang Kembali" />
+        </div>
+        <div class="text">
+          <h2>Festival Malang Kembali</h2>
+          <p>
+            Festival Malang Kembali atau disebut juga Malang Tempo Doeloe
+            merupakan acara tahunan yang digelar di Kota Malang, Jawa Timur.
+            Acara ini menampilkan unsur-unsur dari budaya masa lampau. Acara ini
+            digelar pertama kali pada 2006. Semua yang tersaji di acara ini
+            bernuansa tempo doeloe, mulai dari setting lokasi, dekorasi
+            tiap-tiap stand, dekorasi panggungnya sampai pada kostum pengunjung.
+            Selain terdapat banyak lomba dan pertunjukan kesenian tradisional,
+            di sini juga terdapat banyak makanan, minuman serta souvenir yang
+            semuanya bernuansa tempo doeloe. Hal unik ini selalu menarik para
+            fotografer dari berbagai daerah untuk mengabadikan setiap momen di
+            event ini.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="containerBudaya d-flex"
+        style="margin-top: 50px; background-color: #eef1f6"
+      >
+        <div class="text">
+          <h2>Malang Flower Carnival</h2>
+          <p>
+            Malang Flower Carnival (MFC) merupakan parade busana yang
+            mendefinisikan bunga sebagai identitas Kota Malang. Menggabungkan
+            unsur seni, budaya, pariwisata, dan sejarah sebagai ajang unjuk gigi
+            para seniman lokal. Dimulai sejak 2010, Dinas Pariwisata dan
+            Kebudayaan mempersembahkan Malang Flower Carnival sebagai salah satu
+            daya tarik wisata untuk meningkatkan kunjungan wisatawan. Ajang ini
+            juga menjadi kesempatan bagi Kota Malang menampilkan semua
+            potensinya mulai dari seni budaya, arsitektural, keindahan alam,
+            hingga makanan khas. Malang Flower Festival di inisiasi Agus
+            Sunandar, seorang perancang busana asal Kota Malang. Di tangannya,
+            Malang Flower Carnival berhasil tampil di berbagai parade fashion
+            internasional. Salah satunya tampil mewakili Indonesia di Amsterdam
+            pada 2018.
+          </p>
+        </div>
+        <div class="imej">
+          <img src="assets/images/assets2.png" alt="Malang Flower Carnival" />
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION FORUM -->
+    <div class="container" style="margin-top: 30px">
+      <div
+        class="titlecontainer d-flex align-items-center"
+        style="justify-content: space-between"
+      >
+        <h1>Komunitas</h1>
+        <div
+          class="arrow"
+          style="
+            width: 110px;
+            height: 36px;
+            background-color: #091e5d;
+            border-radius: 10px;
+          "
+        ></div>
+      </div>
+      <div class="forum-banner">
+        <h4 class="mb-0">Forum Wisata</h4>
+      </div>
+      <div class="row">
+        <!-- Event & Workshop -->
+        <div class="col-md-9">
+          <h3
+            class="section-title"
+            style="background-color: #091e5d; border-radius: 10px; color: white"
+          >
+            Event & Workshop
+          </h3>
+          <div
+            class="event-card d-flex align-items-center justify-content-center"
+          >
+            <span class="text-muted">Event Card 1</span>
+          </div>
+          <div
+            class="event-card d-flex align-items-center justify-content-center"
+          >
+            <span class="text-muted">Event Card 2</span>
+          </div>
+          <div
+            class="event-card d-flex align-items-center justify-content-center"
+          >
+            <span class="text-muted">Event Card 3</span>
+          </div>
+        </div>
+
+        <!-- Mitra Bisnis -->
+        <div class="col-md-3">
+          <h3
+            class="section-title"
+            style="background-color: #091e5d; border-radius: 10px; color: white"
+          >
+            Mitra Bisnis
+          </h3>
+          <div
+            class="partner-card d-flex align-items-center justify-content-center"
+          >
+            <div
+              class="items"
+              style="display: flex; flex-direction: column; align-items: center"
+            >
+              <img
+                src="assets/images/MITRA1.png"
+                alt="mitra1"
+                style="max-width: 100%; height: auto; margin-bottom: 10px"
+              />
+              <img
+                src="assets/images/mitra2.png"
+                alt="mitra2"
+                style="max-width: 100%; height: auto; margin-bottom: 10px"
+              />
+              <img
+                src="assets/images/mitra3.png"
+                alt="mitra3"
+                style="max-width: 100%; height: auto; margin-bottom: 10px"
+              />
+              <img
+                src="assets/images/mitra4.png"
+                alt="mitra4"
+                style="max-width: 100%; height: auto; margin-bottom: 10px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        class="titlecontainer d-flex"
+        style="
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        "
+      >
+        <h2 style="margin: 0; color: #091e5d">Oleh-oleh</h2>
+        <div class="arrow"></div>
+      </div>
+
+      <div class="scroll-container">
+        <div class="items-wrapper">
+          <!-- ITEMS START -->
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/Tokodimas.png"
+                alt="tokodimas"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <div
+              class="textcon d-flex"
+              style="
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 0;
+              "
+            >
+              <p style="margin-top: 5px; text-align: left; font-size: 16px">
+                Oleh-oleh Tokodimas
+              </p>
+              <span
+                style="
+                  background-color: white;
+                  height: 20px;
+                  align-self: center;
+                "
+                >05.00 - 21.00</span
+              >
+            </div>
+
+            <div class="context mt-0" style="margin-top: 0px">
+              <p style="font-size: 14px">
+                Sigura-Gura, Karangbesuki > Rp.15.000
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/Gooleh.png"
+                alt="goleh"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <div
+              class="textcon d-flex"
+              style="
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 0;
+              "
+            >
+              <p style="margin-top: 5px; text-align: left; font-size: 16px">
+                Goedang Oleh-oleh
+              </p>
+              <span
+                style="
+                  background-color: white;
+                  height: 20px;
+                  align-self: center;
+                "
+                >07.00 - 20.30</span
+              >
+            </div>
+
+            <div class="context mt-0" style="margin-top: 0px">
+              <p style="font-size: 14px">
+                Jl. Simpang Tenaga Selatan > Rp.15.000
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/bolumlg.png"
+                alt="bolu"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <div
+              class="textcon d-flex"
+              style="
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 0;
+              "
+            >
+              <p style="margin-top: 5px; text-align: left; font-size: 16px">
+                Bolu Malang Singosari
+              </p>
+              <span
+                style="
+                  background-color: white;
+                  height: 20px;
+                  align-self: center;
+                "
+                >07.00 - 22.00</span
+              >
+            </div>
+
+            <div class="context mt-0" style="margin-top: 0px">
+              <p style="font-size: 14px">
+                Jl. Soekarno Hatta, Lowokwaru > Rp.25.000
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/pincap.png"
+                alt="pie"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <div
+              class="textcon d-flex"
+              style="
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 0;
+              "
+            >
+              <p style="margin-top: 5px; text-align: left; font-size: 16px">
+                Pie Cap Mangkok
+              </p>
+              <span
+                style="
+                  background-color: white;
+                  height: 20px;
+                  align-self: center;
+                "
+                >07.00 - 21.30</span
+              >
+            </div>
+
+            <div class="context mt-0" style="margin-top: 0px">
+              <p style="font-size: 14px">
+                Jl. Galunggung, Kec. Klojen > Rp.25.000
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/lancar.png"
+                alt="lancar"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <div
+              class="textcon d-flex"
+              style="
+                justify-content: space-between;
+                gap: 10px;
+                margin-bottom: 0;
+              "
+            >
+              <p style="margin-top: 5px; text-align: left; font-size: 16px">
+                Lancar Jaya Souvenir
+              </p>
+              <span
+                style="
+                  background-color: white;
+                  height: 20px;
+                  align-self: center;
+                "
+                >07.00 - 21.30</span
+              >
+            </div>
+
+            <div class="context mt-0" style="margin-top: 0px">
+              <p style="font-size: 14px">
+                Jl. Tumenggung Suryo, Blimbing > Rp.25.000
+              </p>
+            </div>
+          </div>
+
+          <!-- ITEMS END -->
+        </div>
+      </div>
+    </div>
+    <!-- TEMPAT IBADAH -->
+
+    <div class="container">
+      <div
+        class="titlecontainer d-flex"
+        style="
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        "
+      >
+        <h2 style="margin: 0; color: #091e5d">Tempat Ibadah</h2>
+        <div class="arrow"></div>
+      </div>
+
+      <div class="scroll-container">
+        <div class="items-wrapper">
+          <!-- ITEMS START -->
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/Mnurinka.png"
+                alt="masjidnurinkas"
+                style="height: 100%; width: 100%"
+              />
+            </div>
+            <p
+              style="
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+                color: #333;
+              "
+            >
+              Masjid Nur Inka
+            </p>
+            <div
+              class="lokasi"
+              style="
+                width: 95%;
+                height: 30px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 0px;
+                border-radius: 10px;
+              "
+            >
+              <h6 style="text-align: center">Lokasi</h6>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/Ksntaper.png"
+                alt="katedralsanta"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+            <p
+              style="
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+                color: #333;
+              "
+            >
+              Katedral Santa Perawan Maria
+            </p>
+            <div
+              class="lokasi"
+              style="
+                width: 95%;
+                height: 30px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 0px;
+                border-radius: 10px;
+              "
+            >
+              <h6 style="text-align: center">Lokasi</h6>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/sacred.png"
+                alt="sacred"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+            <p
+              style="
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+                color: #333;
+              "
+            >
+              Sacred Heart of Jesus Catholic Church
+            </p>
+            <div
+              class="lokasi"
+              style="
+                width: 95%;
+                height: 30px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 0px;
+                border-radius: 10px;
+              "
+            >
+              <h6 style="text-align: center">Lokasi</h6>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/mjami.png"
+                alt="mjami"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+            <p
+              style="
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+                color: #333;
+              "
+            >
+              Masjid Agung Jami Malang
+            </p>
+            <div
+              class="lokasi"
+              style="
+                width: 95%;
+                height: 30px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 0px;
+                border-radius: 10px;
+              "
+            >
+              <h6 style="text-align: center">Lokasi</h6>
+            </div>
+          </div>
+
+          <div
+            class="boxkuliner rounded-lg d-flex justify-content-center"
+            style="flex-direction: column; align-items: center"
+          >
+            <div class="boxin bg-white rounded-lg mt-2">
+              <img
+                src="assets/images/mrp.png"
+                alt="mrp"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+            <p
+              style="
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+                color: #333;
+              "
+            >
+              Masjid Raden Patah
+            </p>
+            <div
+              class="lokasi"
+              style="
+                width: 95%;
+                height: 30px;
+                background-color: white;
+                margin-bottom: 10px;
+                margin-top: 0px;
+                border-radius: 10px;
+                align-items: center;
+              "
+            >
+              <h6 style="text-align: center">Lokasi</h6>
+            </div>
+          </div>
+
+          <!-- ITEMS END -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #091e5d">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-start">
+            <p class="text" style="color: white">Wisata</p>
+            <p class="text" style="color: white">Kuliner</p>
+            <p class="text" style="color: white">Budaya & Sejarah</p>
+            <p class="text" style="color: white">Komunitas</p>
+            <p class="text" style="color: white">Oleh-oleh</p>
+            <p class="text" style="color: white">Tempat ibadah</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
