@@ -6,6 +6,29 @@
 */
 
 /* Punya ari Start */
+.arrow {
+        width: 110px;
+        height: 36px;
+        background-color: #091e5d;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .arrow::after {
+        content: "→";
+        color: white;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .arrow:hover {
+        background-color: #0a2a7a;
+      }
+
 @font-face {
   font-family: "Kapakana";
   src: url(../fonts/Kapakana[wght].ttf) format("truetype");
