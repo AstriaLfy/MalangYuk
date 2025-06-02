@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budaya & Sejarah</title>
+    <style>
+      .section-budaya {
+        max-height: calc(100vh - 56px);
+        overflow-y: auto;
+        padding: 20px;
+        background-color: #eef1f6;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .containerBudaya {
+        width: 100%;
+        min-height: 320px;
+        margin-bottom: 30px;
+        gap: 20px;
+        align-items: center;
+        display: flex;
+      }
+
+      .containerBudaya:first-of-type {
+        justify-content: flex-start;
+      }
+
+      .containerBudaya:last-of-type {
+        justify-content: flex-end;
+        margin-bottom: 0;
+      }
+
+      .containerBudaya .imej {
+        flex: 0 0 300px;
+        height: 290px;
+      }
+
+      .containerBudaya .imej img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .containerBudaya .text {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .containerBudaya .text h2 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .containerBudaya .text p {
+        color: #000000;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .containerBudaya {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: left;
+        }
+
+        .containerBudaya .imej {
+          width: 100%;
+          height: auto;
+        }
+
+        .containerBudaya .imej img {
+          width: 100%;
+          height: auto;
+          max-height: 200px;
+        }
+
+        .containerBudaya .text {
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .containerBudaya .text h2 {
+          font-size: 18px;
+        }
+
+        .containerBudaya .text p {
+          font-size: 14px;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="custom-navbar">
+      <a class="brand-link" href="index.html">
+        <img
+          src="assets/images/Logo MalangYuk.png"
+          alt="Logo MalangYuk"
+          class="logo-img"
+        />
+        <div class="merk">
+          <div class="malang">Malang</div>
+          <div class="yuk">yuk!</div>
+        </div>
+      </a>
+
+      <div class="search-container">
+        <form action="/search" method="get" class="search-form">
+          <img
+            src="assets/images/Search icon.png"
+            alt="Search"
+            class="search-icon"
+          />
+          <input type="search" id="search-input" name="q" placeholder="Cari" />
+        </form>
+      </div>
+
+      <div class="profile-container">
+        <img src="assets/images/profile-icon.png" alt="profile" />
+      </div>
+    </nav>
+
+    <!-- Konten Budaya -->
+    <div class="container mt-4">
+      <div
+        class="titlecontainer d-flex"
+        style="
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        "
+      >
+        <h2 style="margin: 0; color: #091e5d">Budaya & Sejarah</h2>
+      </div>
+
+      <div class="containerBudaya">
+        <div class="imej">
+          <img src="assets/images/assets1.png" alt="Festival Malang Kembali" />
+        </div>
+        <div class="text">
+          <h2>Festival Malang Kembali</h2>
+          <p>
+            Festival Malang Kembali atau disebut juga Malang Tempo Doeloe
+            merupakan acara tahunan yang digelar di Kota Malang, Jawa Timur.
+            Acara ini menampilkan unsur-unsur dari budaya masa lampau. Acara ini
+            digelar pertama kali pada 2006. Semua yang tersaji di acara ini
+            bernuansa tempo doeloe, mulai dari setting lokasi, dekorasi
+            tiap-tiap stand, dekorasi panggungnya sampai pada kostum pengunjung.
+            Selain terdapat banyak lomba dan pertunjukan kesenian tradisional,
+            di sini juga terdapat banyak makanan, minuman serta souvenir yang
+            semuanya bernuansa tempo doeloe. Hal unik ini selalu menarik para
+            fotografer dari berbagai daerah untuk mengabadikan setiap momen di
+            event ini.
+          </p>
+        </div>
+      </div>
+
+      <div class="containerBudaya">
+        <div class="text">
+          <h2>Malang Flower Carnival</h2>
+          <p>
+            Malang Flower Carnival (MFC) merupakan parade busana yang
+            mendefinisikan bunga sebagai identitas Kota Malang. Menggabungkan
+            unsur seni, budaya, pariwisata, dan sejarah sebagai ajang unjuk gigi
+            para seniman lokal. Dimulai sejak 2010, Dinas Pariwisata dan
+            Kebudayaan mempersembahkan Malang Flower Carnival sebagai salah satu
+            daya tarik wisata untuk meningkatkan kunjungan wisatawan. Ajang ini
+            juga menjadi kesempatan bagi Kota Malang menampilkan semua
+            potensinya mulai dari seni budaya, arsitektural, keindahan alam,
+            hingga makanan khas. Malang Flower Festival di inisiasi Agus
+            Sunandar, seorang perancang busana asal Kota Malang. Di tangannya,
+            Malang Flower Carnival berhasil tampil di berbagai parade fashion
+            internasional. Salah satunya tampil mewakili Indonesia di Amsterdam
+            pada 2018.
+          </p>
+        </div>
+        <div class="imej">
+          <img src="assets/images/assets2.png" alt="Malang Flower Carnival" />
+        </div>
+      </div>
+
+      <div class="containerBudaya">
+        <div class="imej">
+          <img src="assets/images/assets1.png" alt="Festival Malang Kembali" />
+        </div>
+        <div class="text">
+          <h2>Festival Malang Kembali</h2>
+          <p>
+            Festival Malang Kembali atau disebut juga Malang Tempo Doeloe
+            merupakan acara tahunan yang digelar di Kota Malang, Jawa Timur.
+            Acara ini menampilkan unsur-unsur dari budaya masa lampau. Acara ini
+            digelar pertama kali pada 2006. Semua yang tersaji di acara ini
+            bernuansa tempo doeloe, mulai dari setting lokasi, dekorasi
+            tiap-tiap stand, dekorasi panggungnya sampai pada kostum pengunjung.
+            Selain terdapat banyak lomba dan pertunjukan kesenian tradisional,
+            di sini juga terdapat banyak makanan, minuman serta souvenir yang
+            semuanya bernuansa tempo doeloe. Hal unik ini selalu menarik para
+            fotografer dari berbagai daerah untuk mengabadikan setiap momen di
+            event ini.
+          </p>
+        </div>
+      </div>
+
+      <div class="containerBudaya">
+        <div class="text">
+          <h2>Malang Flower Carnival</h2>
+          <p>
+            Malang Flower Carnival (MFC) merupakan parade busana yang
+            mendefinisikan bunga sebagai identitas Kota Malang. Menggabungkan
+            unsur seni, budaya, pariwisata, dan sejarah sebagai ajang unjuk gigi
+            para seniman lokal. Dimulai sejak 2010, Dinas Pariwisata dan
+            Kebudayaan mempersembahkan Malang Flower Carnival sebagai salah satu
+            daya tarik wisata untuk meningkatkan kunjungan wisatawan. Ajang ini
+            juga menjadi kesempatan bagi Kota Malang menampilkan semua
+            potensinya mulai dari seni budaya, arsitektural, keindahan alam,
+            hingga makanan khas. Malang Flower Festival di inisiasi Agus
+            Sunandar, seorang perancang busana asal Kota Malang. Di tangannya,
+            Malang Flower Carnival berhasil tampil di berbagai parade fashion
+            internasional. Salah satunya tampil mewakili Indonesia di Amsterdam
+            pada 2018.
+          </p>
+        </div>
+        <div class="imej">
+          <img src="assets/images/assets2.png" alt="Malang Flower Carnival" />
+        </div>
+      </div>
+
+      <!-- Tambahan duplikat (jika perlu, tinggal copy blok di atas) -->
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #091e5d">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-start">
+            <a href="wisata.html"><p style="color: white">Wisata</p></a>
+            <a href="kuliner.html"><p style="color: white">Kuliner</p></a>
+            <a href="Budaya.html"
+              ><p style="color: white">Budaya & Sejarah</p></a
+            >
+            <a href="Komunitas.html"><p style="color: white">Komunitas</p></a>
+            <a href="oleholeh.html"><p style="color: white">Oleh-oleh</p></a>
+            <a href="tempatIbadah.html"
+              ><p style="color: white">Tempat ibadah</p></a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
