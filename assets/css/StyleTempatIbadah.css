@@ -1,0 +1,236 @@
+@font-face {
+    font-family: "Kapakana";
+    src: url(../fonts/Kapakana[wght].ttf) format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.custom-navbar {
+    background-color: #091e5d;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.merk {
+    display: flex;
+    align-items: baseline;
+}
+
+.merk .malang {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #f7f2ec;
+    font-size: 1.5rem;
+    margin-right: 4px;
+    line-height: 1;
+}
+
+.merk .yuk {
+    font-family: "Kapakana";
+    color: #d0e4ff;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-style: italic;
+    font-weight: normal;
+    position: relative;
+    top: 0.2em;
+    margin-left: -1px;
+}
+
+.search-container {
+    flex-grow: 1;
+    width: auto;
+    max-width: 600px;
+    min-width: 150px;
+    margin: 0 20px;
+    margin-left: 2.5%;
+}
+
+.search-form {
+    position: relative;
+    width: 100%;
+}
+
+.search-form input[type="search"] {
+    background-color: #f7f2ec;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px 10px 45px;
+    height: 30px;
+    font-size: 0.9rem;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.search-form input[type="search"]::placeholder {
+    color: #757575;
+    font-style: normal;
+}
+
+.search-form .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: auto;
+    z-index: 10;
+}
+
+.profile-container {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.profile-container img {
+    height: 30px;
+    /* Memperkecil ikon profil */
+    width: 30px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-container {
+    max-width: 1200px;
+    /* Lebar maksimum konten halaman */
+    margin: 0 auto;
+    /* Tengahkankan konten halaman */
+    padding: 20px;
+}
+
+.page-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #091E5D;
+    /* Warna biru gelap untuk judul, sesuaikan dengan tema Anda */
+}
+
+.card-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 8px solid #BBD6EB;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-bottom: 40px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Efek sedikit terangkat saat hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    /* Tinggi gambar yang konsisten */
+    object-fit: cover;
+    /* Memastikan gambar mengisi area tanpa distorsi */
+    display: block;
+}
+
+.card-content {
+    padding-left: 2px;
+    padding-top: 5px;
+    text-align: left;
+    background-color: #BBD6EB;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content h4 {
+    margin-top: -2px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+    min-height: 44px;
+    padding: 0;
+    /* Beri tinggi minimum untuk 2 baris teks agar rata */
+}
+
+.location-button {
+    background-color: #F3F0DF;
+    color: #091E5D;
+    border: 1px solid #d0d0d0;
+    padding: 8px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: -25px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.location-button:hover {
+    background-color: #7eb4ee;
+    color: #ffffff;
+    border-color: #7eb4ee;
+}
+
+.ibadah-section-title {
+    text-align: left;
+    font-size: 1.5rem;
+    color: black;
+    margin-left: 3.5%;
+    font-weight: 700;
+    margin-top: 3%;
+    margin-bottom: 15px;
+}
+
+footer {
+    padding: 30px 0;
+    margin-top: 40px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.text {
+    margin-left: 5%;
+}

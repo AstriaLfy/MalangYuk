@@ -1,0 +1,166 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+h1 {
+  font-family: "Poppins", sans-serif;
+}
+h4 {
+  font-family: "Poppins";
+}
+
+.custom-navbar {
+  background-color: #091e5d;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  margin-right: 5px;
+}
+
+.merk {
+  display: flex;
+  align-items: baseline;
+}
+
+.merk .malang {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #f7f2ec;
+  font-size: 1.5rem;
+  margin-right: 4px;
+  line-height: 1;
+}
+
+.merk .yuk {
+  font-family: "Kapakana";
+  color: #d0e4ff;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-style: italic;
+  font-weight: normal;
+  position: relative;
+  top: 0.2em;
+  margin-left: -1px;
+}
+
+.search-container {
+  flex-grow: 1;
+  width: auto;
+  max-width: 600px;
+  min-width: 150px;
+  margin: 0 20px;
+  margin-left: 2.5%;
+}
+
+.search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-form input[type="search"] {
+  background-color: #f7f2ec;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 15px 10px 45px;
+  height: 30px;
+  font-size: 0.9rem;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.search-form input[type="search"]::placeholder {
+  color: #757575;
+  font-style: normal;
+}
+
+.search-form .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: auto;
+  z-index: 10;
+}
+
+.profile-container {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.profile-container img {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.section-title {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Forum Wisata section */
+.forum-banner {
+  background-color: #7097d2;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  margin: 30px 0;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Event & Workshop */
+.event-card {
+  height: 120px;
+  background-color: #e9ecef;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  transition: box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mitra Bisnis */
+.partner-card {
+  height: 320px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  transition: box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.itemtext {
+  align-items: start;
+  margin-left: 20px;
+  margin-top: 150px;
+}
+
+.itemtext h6 {
+  margin-bottom: 0;
+}
+
+.itemtext p {
+  margin-top: 0;
+}
